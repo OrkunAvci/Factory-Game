@@ -1,0 +1,40 @@
+{% extends "./base.html" %}
+
+{% block content %}
+
+{% if form.errors %}
+<p>Your username and password didn't match. Please try again.</p>
+{% endif %}
+
+{% if next %}
+	{% if user.is_authenticated %}
+		<p>Your account doesn't have access to this page. To proceed, please login with an account that has access.</p>
+	{% else %}
+		<p>Please login to see this page.</p>
+	{% endif %}
+{% endif %}
+
+<!--Login-->
+<div class="container py-5 w-50">
+	<h1 class="text-center">Login</h1>
+	<form method="post" action="{% url 'master:login' %}">
+		{% csrf_token %}
+		<div class="mb-3">
+			<label for="username" class="form-label">Username</label>
+			<input type="text" class="form-control" id="username" name="username" aria-describedby="username">
+		</div>
+		<div class="mb-3">
+			<label for="password" class="form-label">Password</label>
+			<input type="password" class="form-control" id="password" name="password">
+		</div>
+		<input type="hidden" name="next" value="{{ next }}">
+		<div class="text-center my-2">
+			<button type="submit" class="btn btn-primary">Login</button>
+		</di>
+	</form>
+	<p class="text-center my-4">
+		Don't have an account? <a href="{% url 'master:register' %}">Create an account</a>.
+	</p>
+</div>
+
+{% endblock %}
