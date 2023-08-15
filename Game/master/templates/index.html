@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% include "./showcase.html" %}
+<div class="conatiner text-center">
+	<div class="col-12 my-3">
+		<form action="{% url 'master:index' %}" method="post">
+			{% csrf_token %}
+			<button class="btn btn-primary">Sell All</button>
+		</form>
+	</div>
+</div>
+
+{% endblock %}
