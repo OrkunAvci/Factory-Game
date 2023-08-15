@@ -1,0 +1,59 @@
+{% load humanize %}
+<div class="container text-center w-50 border">
+	<div class="row">
+		<div class="col border py-3">
+			Money
+		</div>
+		<div class="col border py-3">
+			{{ player.money|intcomma }}
+		</div>
+	</div>
+	<div class="row">
+		<div class="col border py-3">
+			Production
+		</div>
+		<div class="col border py-3">
+			{{ player.production|intcomma }}
+		</div>
+	</div>
+	<div class="row">
+		<div class="col border py-3">
+			Products | Storage
+		</div>
+		<div class="col border py-3">
+			{{ player.products|intcomma }} | {{ player.storage|intcomma }}
+		</div>
+	</div>
+	<div class="row">
+		<div class="col border py-3">
+			Resource
+		</div>
+		<div class="col border py-3">
+			{{ player.resource|intcomma }}
+		</div>
+	</div>
+	<div class="row">
+		<div class="col border py-3">
+			Tax
+		</div>
+		<div class="col border py-3">
+			{{ player.tax|intcomma }}
+		</div>
+	</div>
+	<div class="row">
+		<div class="col border py-3">
+			Level | Reputation
+		</div>
+		<div class="col border py-3">
+			{{ player.level|intcomma }} | {{ player.reputation|intcomma }}
+		</div>
+	</div>
+	<div class="row">
+		<div class="col border py-3">
+			Selling Multiplier
+		</div>
+		<div class="col border py-3">
+			{{ player.selling_mult|intcomma }}
+		</div>
+	</div>
+</div>
