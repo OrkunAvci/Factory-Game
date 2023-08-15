@@ -1,0 +1,28 @@
+{% extends "./base.html" %}
+
+{% block content %}       
+
+<!--Register--> 
+<div class="container py-5 w-50">
+	<h1 class="text-center">Register</h1>
+	<form method="post" action="{% url 'master:register' %}">
+		{% csrf_token %}
+		<div class="mb-3">
+			<label for="username" class="form-label">Username</label>
+			<input type="text" class="form-control" id="username" name="username" aria-describedby="username">
+		</div>
+		<div class="mb-3">
+			<label for="password1" class="form-label">Password</label>
+			<input type="password" class="form-control" id="password1" name="password1">
+		</div>
+		<div class="mb-3">
+			<label for="password2" class="form-label">Password Reconfirmation</label>
+			<input type="password" class="form-control" id="password2" name="password2">
+		</div>
+			<div class="mb-3 text-center my-5">
+			<button type="submit" class="btn btn-primary">Register</button>
+		</div>
+	</form>
+</div>
+
+{% endblock %}
