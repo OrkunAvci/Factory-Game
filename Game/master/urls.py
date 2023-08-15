@@ -14,5 +14,6 @@ urlpatterns = [
     path("storage/", views.storage, name="storage"),
     path("reputation/", views.reputation, name="reputation"),
 	path("resource/", views.resource, name="resource"),
-    path("tax/", views.tax, name="tax")
+    path("tax/", views.tax, name="tax"),
+    path("about/", views.about, name="about"),
 ]

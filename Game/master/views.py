@@ -125,12 +125,12 @@ def tax(request):
 	if request.method == "POST":
 		tax_request = int(request.POST.get("resource"))
 		player = context["player"]
-		if player.money >= tax_request:
+		if player.money >= tax_request and tax_request < player.tax:
 			player.money -= tax_request
 			player.tax -= tax_request
 			player.save()
 		else:
-			print("Not enough.")
+			print("Not enough. Or overpaid.")
 	return render(request = request, template_name = "tax.html", context = context)
 
 def register(request):
@@ -170,3 +170,7 @@ def logout(request):
 	context = {}
 	auth_logout(request = request)
 	return redirect("master:login")
+
+def about(request):
+	context = {}
+	return render(request = request, template_name = "about.html", context = context)
