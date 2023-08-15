@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container text-center">
+	<div class="fs-4">Money: {{ player.money }}</div>
+	<div class="fs-4">Reputation: {{ player.reputation }}</div>
+</div>
+
+<div class="container-fluid text-center d-flex flex-row">
+	{% for rep in reps %}
+		<div class="card m-5 w-100">
+			<div class="card-header">
+				{{ rep.name }}
+			</div>
+			<div class="card-body">
+				<p class="card-text">Cost: {{ rep.cost }}</p>
+				<p class="card-text">Reputation: {{ rep.rep }}</p>
+				<form action="{% url 'master:reputation'%}" method="post">
+					{% csrf_token %}
+					<input type="hidden" value="{{ rep.id }}" name="id"/>
+					<button type="submit" class="btn btn-primary">Buy</button>
+				</form>
+			</div>
+		</div>
+	{% endfor %}
+</div>
+
+{% endblock %}
