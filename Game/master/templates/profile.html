@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% include "./showcase.html" %}
+<div class="conatiner text-center">
+	<div class="col-12 my-3">
+		<a href="{% url 'master:logout' %}" class="btn btn-danger">Logout</a>
+	</div>
+</div>
+
+
+{% endblock %}
