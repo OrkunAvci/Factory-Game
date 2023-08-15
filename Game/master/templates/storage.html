@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% load humanize %}
+
+<div class="container text-center">
+	<div class="fs-4">Money: {{ player.money|intcomma }}</div>
+	<div class="fs-4">Storage: {{ player.storage|intcomma }}</div>
+</div>
+
+<div class="container-fluid text-center d-flex flex-row">
+	{% for storage in storages %}
+		<div class="card m-5 w-100">
+			<div class="card-header">
+				{{ storage.name }}
+			</div>
+			<div class="card-body">
+				<p class="card-text">Cost: {{ storage.cost }}</p>
+				<p class="card-text">Capacity: {{ storage.storage }}</p>
+				<p class="card-text">Level: {{ storage.level }}</p>
+				<form action="{% url 'master:storage'%}" method="post">
+					{% csrf_token %}
+					<input type="hidden" value="{{ storage.id }}" name="id"/>
+					<button type="submit" class="btn btn-primary">Buy</button>
+				</form>
+			</div>
+		</div>
+	{% endfor %}
+</div>
+
+{% endblock %}
